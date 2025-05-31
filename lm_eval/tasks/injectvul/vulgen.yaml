@@ -1,0 +1,14 @@
+task: binvulgen-inject
+dataset_path: /home1/arasteh/BinVulGen/lm-evaluation-harness/lm_eval/tasks/injectvul/vulgen_ds.py
+dataset_name: binvulgen-inject
+dataset_kwargs: {'trust_remote_code': True}
+output_type: generate_until
+test_split: test
+doc_to_text: "{{instruction}}\n{{function_body}}\n"
+doc_to_target: "{{expected_output}}"
+
+generation_kwargs:
+  until: []
+  do_sample: True
+  temperature: 0.7
+  max_gen_toks: 2000
