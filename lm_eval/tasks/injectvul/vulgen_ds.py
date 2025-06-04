@@ -19,7 +19,7 @@ class InjectUAFDataset(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
-        dataset_path = "/home1/arasteh/BinVulGen/lm-evaluation-harness/lm_eval/tasks/injectvul/func_bodies"  # Folder with .txt files
+        dataset_path = "/home1/arasteh/BinVulGen/external/lm-evaluation-harness/lm_eval/tasks/injectvul/func_bodies"  # Folder with .txt files
         return [
             datasets.SplitGenerator(name=datasets.Split.TRAIN, gen_kwargs={"filepath": dataset_path}),
             datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepath": dataset_path}),
