@@ -1,5 +1,5 @@
 task: binvulgen-inject
-dataset_path: /home1/arasteh/BinVulGen/lm-evaluation-harness/lm_eval/tasks/injectvul/vulgen_ds.py
+dataset_path: /home1/arasteh/BinVulGen/external/lm-evaluation-harness/lm_eval/tasks/injectvul/vulgen_ds.py
 dataset_name: binvulgen-inject
 dataset_kwargs: {'trust_remote_code': True}
 output_type: generate_until
