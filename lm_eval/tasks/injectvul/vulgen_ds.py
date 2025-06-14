@@ -40,9 +40,10 @@ class InjectUAFDataset(datasets.GeneratorBasedBuilder):
             try:
                 with open(file_path, "r") as f:
                     function_body = f.read().strip()
-
+                filename = os.path.basename(file_path)
+                function_name = filename.split(".")[0]
                 yield i, {
-                    "id": f"func_{i}",
+                    "id": function_name,
                     "function_body": function_body,
                     "instruction": instruction,
                     "expected_output": "",  # Leave blank; model will generate
