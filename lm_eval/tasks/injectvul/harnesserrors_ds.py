@@ -33,7 +33,7 @@ class FixHarnessError(datasets.GeneratorBasedBuilder):
 
             "I have generated the following fuzzing harness for a C/C++ function. However, when I attempt to build the harness using the OSS-Fuzz build system (with clang and AddressSanitizer), I encounter these build errors."
 
-            "Please analyze the harness and the build errors. rewrite the fuzzing harness and try to fix the build errors."
+            "Please analyze the harness and the build errors. Only rewrite the fuzzing harness and try to fix the build errors."
         )
 
         file_list = glob.glob(os.path.join(filepath, "*.txt"))

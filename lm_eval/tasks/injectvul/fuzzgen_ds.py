@@ -28,7 +28,17 @@ class FuzzGenDataset(datasets.GeneratorBasedBuilder):
 
     def _generate_examples(self, filepath):
         instruction = (
-            "write a libfuzzer style fuzzing harness for this function"
+            "You are given a C/C++ function. Write a LibFuzzer-compatible fuzzing harness for it."
+
+            "Requirements:"
+            "1. The harness must define `extern C int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)`."
+            "2. Do NOT define the function you are fuzzing; instead, declare it using `extern C` so it can be linked from another object file."
+            "3. Use `extern C` for both `LLVMFuzzerTestOneInput` and the target function to prevent C++ name mangling and ensure the harness links correctly with C code."
+            "4. Include minimal and necessary headers (`<stdint.h>`, `<stddef.h>`, etc.)."
+            "5. If the function uses structs, enums, or typedefs, provide placeholder or mock definitions OR leave a comment indicating they must be included."
+            "6. Always check `size` before accessing `data` to avoid buffer overflows."
+            "7. Convert `data` into appropriate argument types for the target function (e.g., arrays, integers, enums)."
+            "8. Return 0 from `LLVMFuzzerTestOneInput`."
         )
 
         file_list = glob.glob(os.path.join(filepath, "*.txt"))
