@@ -39,11 +39,14 @@ class FixBuildError(datasets.GeneratorBasedBuilder):
             try:
                 with open(file_path, "r") as f:
                     content = f.read().strip()
+                
+                filename = os.path.basename(file_path)
+                function_name = filename.split(".")[0]
                 content_parts = content.split("++++++++++")
                 function_body = content_parts[0]
                 builderror = content_parts[1]
                 yield i, {
-                    "id": f"func_{i}",
+                    "id": function_name,
                     "function_body": function_body,
                     "builderror": builderror,
                     "instruction": instruction,
