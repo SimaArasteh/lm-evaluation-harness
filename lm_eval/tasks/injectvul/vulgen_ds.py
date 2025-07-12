@@ -35,7 +35,7 @@ class InjectUAFDataset(datasets.GeneratorBasedBuilder):
         with open(selected_pattern, "r") as pat:
             pattern_content = pat.read()
 
-        instruction = "I will give you a pattern of use-after-free. use this pattern to inject vulnerability in the following function. Pattern:"+pattern_content
+        instruction = "I will give you a pattern of use-after-free. use this pattern to inject vulnerability in the following function. if any added lines require a new header file just add that header file. Otherwise do not add any other functions. here is the Pattern:"+pattern_content
         
         file_list = glob.glob(os.path.join(filepath, "*.txt"))
 
