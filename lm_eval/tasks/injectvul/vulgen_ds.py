@@ -45,6 +45,12 @@ class InjectUAFDataset(datasets.GeneratorBasedBuilder):
                     function_body = f.read().strip()
                 filename = os.path.basename(file_path)
                 function_name = filename.split(".")[0]
+                module_name = filename.split(".")[1]
+                if module_name.lower() == ".c":
+                    instruction = instruction+" Remember:This function is written in C language.just use C specific keywords and syntax"
+                if module_name.lower() == ".cpp" or module_name.lower() == ".cxx":
+                    instruction = instruction+" Remember:This function is written in Cplusplus language.just use C++ specific keywords and syntax"
+
                 yield i, {
                     "id": function_name,
                     "function_body": function_body,
