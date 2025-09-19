@@ -4,7 +4,7 @@ dataset_name: fixerror
 dataset_kwargs: {'trust_remote_code': True}
 output_type: generate_until
 test_split: test
-doc_to_text: "{{instruction}}\n{{function_body}}\n{{builderror}}"
+doc_to_text: "{{instruction}}\n{{function_body}}"
 doc_to_target: "{{expected_output}}"
 
 generation_kwargs:

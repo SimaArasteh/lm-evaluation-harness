@@ -19,7 +19,7 @@ class PatternDataset(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
-        dataset_path = "/home1/arasteh/BinVulGen/pattern_functions/juliet"  # Folder with .txt files
+        dataset_path = "/home1/arasteh/BinVulGen/pattern_functions/cves/"  # Folder with .txt files
         return [
             datasets.SplitGenerator(name=datasets.Split.TRAIN, gen_kwargs={"filepath": dataset_path}),
             datasets.SplitGenerator(name=datasets.Split.TEST, gen_kwargs={"filepath": dataset_path}),
@@ -28,9 +28,16 @@ class PatternDataset(datasets.GeneratorBasedBuilder):
 
     def _generate_examples(self, filepath):
         instruction = (
-            "You are given a C/C++ function. can you describe the pattern of use-after-free"
-            "vulnerability of this function"
+            "I will give you a real CVE, the corresponding patch and the body of function"
+            "that contains use-after-free vulnerability. Please summerize the pattern of use-after-free in this function"
         )
+
+        '''instruction = (
+            "I will give you a real CVE, the corresponding patch and the body of function that contains use-after-free vulnerability."
+            "First, extract and write all lines of the function body that is related to use-after-free with a comment infront of that which describes the code line"
+            "Second, summerize the vulnerability pattern and explain how these lines lead to use-after-free?"
+        
+        )'''
 
         file_list = glob.glob(os.path.join(filepath, "*.txt"))
 

@@ -10,7 +10,6 @@ class FixBuildError(datasets.GeneratorBasedBuilder):
                 {
                     "id": datasets.Value("string"),
                     "function_body": datasets.Value("string"),
-                    "builderror": datasets.Value("string"),
                     "instruction": datasets.Value("string"),
                     "expected_output": datasets.Value("string"),
                 }
@@ -48,7 +47,6 @@ class FixBuildError(datasets.GeneratorBasedBuilder):
                 yield i, {
                     "id": function_name,
                     "function_body": function_body,
-                    "builderror": builderror,
                     "instruction": instruction,
                     "expected_output": "",  # Leave blank; model will generate
                 }
